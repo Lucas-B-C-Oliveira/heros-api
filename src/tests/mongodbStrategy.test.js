@@ -27,7 +27,7 @@ describe('MongoDB Test Suite', function () {
     this.beforeAll(async () => {
         let connection = MongoDb
         connection = MongoDb.connect()
-        
+
         context = new Context(new MongoDb(connection, HeroSchema))
 
         await context.create(MOCK_HERO_DEFAULT)
@@ -69,4 +69,4 @@ describe('MongoDB Test Suite', function () {
         assert.deepStrictEqual(result.deletedCount, 1)
     })
 
-} )
+})

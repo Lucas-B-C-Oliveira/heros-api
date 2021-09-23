@@ -17,9 +17,9 @@ class MongoDB extends ICrud {
     async isConnected() {
         const state = STATUS[this._connection.readyState]
 
-        if(state === 'Connected') return state
+        if (state === 'Connected') return state
 
-        if(state === '!Connecting') return state
+        if (state === '!Connecting') return state
 
         await new Promise(resolve => setTimeout(resolve, 1000))
 
@@ -27,7 +27,7 @@ class MongoDB extends ICrud {
     }
 
     static connect() {
-        Mongoose.connect('mongodb://lucasbcoliveira:minhasenhasecreta@localhost:27017/heroes',
+        Mongoose.connect(process.env.MONGODB_URL,
             { useNewUrlParser: true }, function (error) {
                 if (!error) return;
                 console.log('Connection fail! ', error)
@@ -48,10 +48,10 @@ class MongoDB extends ICrud {
     }
 
     update(id, item) {
-        return this._schema.updateOne({ _id: id }, {$set: item })
+        return this._schema.updateOne({ _id: id }, { $set: item })
     }
 
-    delete(id){
+    delete(id) {
         return this._schema.deleteOne({ _id: id })
     }
 }
