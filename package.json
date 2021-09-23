@@ -17,6 +17,7 @@
     "@hapi/vision": "^6.1.0",
     "bcrypt": "^5.0.1",
     "boom": "^7.3.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "hapi-auth-jwt2": "^10.2.0",
     "hapi-swagger": "^9.1.3",
