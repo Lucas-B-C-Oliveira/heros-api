@@ -23,7 +23,7 @@ describe('Postgres Strategy', function () {
         const connection = await Postgres.connect()
         const model = await Postgres.defineModel(connection, HeroSchema)
         context = new Context(new Postgres(connection, model))
-        
+
         await context.delete()
         await context.create(MOCK_HERO_UPDATE)
     })
@@ -40,7 +40,7 @@ describe('Postgres Strategy', function () {
     })
 
     it('Read', async function () {
-        const [result] = await context.read({ name: MOCK_HERO_REGISTER.name})
+        const [result] = await context.read({ name: MOCK_HERO_REGISTER.name })
         delete result.id
         assert.deepStrictEqual(result, MOCK_HERO_REGISTER)
     })

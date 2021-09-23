@@ -2,7 +2,7 @@ const assert = require('assert')
 const api = require('../api')
 
 let app = {}
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh1eGFkYXNpbHZhIiwiaWQiOjEsImlhdCI6MTYzMjE4NDk0N30.ijHpODj9Bt-OqsjEa7gSxuBDkkJmyTCjO8wefzVSSfk'
+const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh1eGFkYXNpbHZhIiwiaWQiOjEsImlhdCI6MTYzMjQyODg5N30.rgLz1sf-FGEh0-y_KVOY9zbwR7olIGDoIVVxJ6u9NBk"
 
 const headers = {
     Authorization: TOKEN
@@ -75,7 +75,7 @@ describe('Heroes API Test Suite', function () {
         })
 
         const statusCode = result.statusCode
-        const errorResult = {"statusCode":400,"error":"Bad Request","message":"child \"limit\" fails because [\"limit\" must be a number]","validation":{"source":"query","keys":["limit"]}}
+        const errorResult = { "statusCode": 400, "error": "Bad Request", "message": "child \"limit\" fails because [\"limit\" must be a number]", "validation": { "source": "query", "keys": ["limit"] } }
 
 
         assert.deepStrictEqual(statusCode, 400)
@@ -191,7 +191,7 @@ describe('Heroes API Test Suite', function () {
             statusCode: 412,
             error: 'Precondition Failed',
             message: 'Id not found in data base'
-          }
+        }
 
         assert.ok(statusCode === 412)
         assert.deepStrictEqual(data, expected)
@@ -211,7 +211,7 @@ describe('Heroes API Test Suite', function () {
             statusCode: 500,
             error: 'Internal Server Error',
             message: 'An internal server error occurred'
-          }
+        }
 
         assert.ok(statusCode === 500)
         assert.deepStrictEqual(data, expected)

@@ -29,8 +29,9 @@ const Inert = require('inert')
 const JWT_SECRET = toString(process.env.JWT_KEY)
 const HapiJwt = require('hapi-auth-jwt2')
 
+
 const app = new Hapi.Server({
-    port: process.env.PORT
+    port: parseInt(process.env.PORT)
 })
 
 function mapRoutes(instance, methods) {
@@ -39,7 +40,7 @@ function mapRoutes(instance, methods) {
 
 async function main() {
     const connection = MongoDb.connect()
-    const context = new Context(new MongoDb(connection, HeroSchema))
+    const contextMongoDb = new Context(new MongoDb(connection, HeroSchema))
 
     const connectionPostgres = await Postgres.connect()
     const model = await Postgres.defineModel(connectionPostgres, userSchema)
@@ -83,7 +84,7 @@ async function main() {
     app.validator(Joi)
 
     app.route([
-        ...mapRoutes(new HeroRoutes(context), HeroRoutes.methods()),
+        ...mapRoutes(new HeroRoutes(contextMongoDb), HeroRoutes.methods()),
         ...mapRoutes(new AuthRoutes(JWT_SECRET, contextPostgres), AuthRoutes.methods())
     ])
 

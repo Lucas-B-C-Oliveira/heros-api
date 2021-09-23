@@ -56,11 +56,12 @@ class Postgres extends ICrud {
             operatorsAliases: false,
             logging: false,
             quoteIdentifiers: false,
-            ssl: process.env.SSL_DB,
+            ssl: (process.env.SSL_DB === 'true'),
             dialectOptions: {
-                ssl: process.env.SSL_DB
+                ssl: (process.env.SSL_DB === 'true')
             }
         })
+
         return connection
     }
 }
