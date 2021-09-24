@@ -6,7 +6,7 @@
   "scripts": {
     "prod": "cross-env NODE_ENV=prod pm2-runtime src/api.js",
     "start": "cross-env NODE_ENV=prod node src/api.js",
-    "test": "mocha --timeout 10000 src/tests/*.js",
+    "test": "nyc --reporter=html mocha --timeout 10000 --exit src/tests/*.js",
     "test:prod": "cross-env NODE_ENV=prod npm t"
   },
   "keywords": [],
@@ -33,6 +33,7 @@
     "vision": "^5.4.4"
   },
   "devDependencies": {
-    "mocha": "^9.1.1"
+    "mocha": "^9.1.1",
+    "nyc": "^15.1.0"
   }
 }
