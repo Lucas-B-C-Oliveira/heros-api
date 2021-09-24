@@ -48,8 +48,8 @@ describe('Heroes API Test Suite', function () {
         assert.ok(Array.isArray(data))
     })
 
-    it('Listar GET - /heroes - should only return 10 records', async () => {
-        const LIMIT_SIZE = 3
+    it('Listar GET - /heroes - should only return 3 records', async () => {
+        const LIMIT_SIZE = 2
 
         const result = await app.inject({
             method: 'GET',
@@ -174,6 +174,7 @@ describe('Heroes API Test Suite', function () {
         const data = JSON.parse(result.payload)
 
         assert.ok(statusCode === 200)
+
         assert.deepStrictEqual(data.message, 'Hero successfully removed')
     })
 
