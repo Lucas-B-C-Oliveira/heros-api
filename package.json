@@ -4,7 +4,7 @@
   "description": "docker run `\r    --name postgres `\r    -e POSTGRES_USER=user `\r    -e POSTGRES_PASSWORD=senha `\r    -e POSTGRES_DB=heros `\r    -p 5432:5432 `\r    -d `\r    postgres",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run test:prod ",
+    "postinstall": "cross-env NODE_ENV=prod npm t",
     "prod": "cross-env NODE_ENV=prod pm2-runtime src/api.js",
     "start": "cross-env NODE_ENV=prod node src/api.js",
     "test": "nyc --reporter=html mocha --timeout 10000 --exit src/tests/*.js",
